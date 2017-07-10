@@ -22,9 +22,6 @@ content.add_parameter('video folder', type='filepath')
 # Video player from OF
 vid = ofVideoPlayer()
 
-#custom member variable to detect end of video
-vid.video_was_playing = False
-
 current_video_file = None
 
 
@@ -105,10 +102,16 @@ def draw():
 
 def video_ended(v):
     "Portable way to know if an OF video player has ended"
+    
+    # We need to remember latest checks, as some of these methods return ambiguous values
+    if not hasattr(v,'video_was_playing'):
+        v.video_was_playing = False
+    
+    # Now we deduce the state of video player
     if v.getPosition() == 1.0:
         v.video_was_playing = False
         return True
-    elif v.getPosition() < 0:
+    elif v.getPosition() < 0: #-inf tipically
         if v.video_was_playing:
             v.video_was_playing = False
             return True
