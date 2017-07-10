@@ -10,7 +10,7 @@ import os.path
 
 
 # Constants
-DEFAULT_VIDEO_PATH = "/home/protopixel/Videos"
+DEFAULT_VIDEO_PATH = "/home/protopixel/Desktop/videos"
 VIDEO_EXTENSIONS = ['.mp4','.avi','.mpg']
 
 
