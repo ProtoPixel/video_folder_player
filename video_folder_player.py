@@ -59,8 +59,6 @@ def load_next_video():
     if not video_list:
         return
 
-    print video_list
-
     #try to get next playable item
     try:
         index_current = video_list.index(current_video_file)
@@ -74,14 +72,9 @@ def load_next_video():
     current_video_file = next_to_play
 
     if load_video(os.path.join(video_folder,next_to_play)):
-        print "PLAYING"
         vid.setLoopState(OF_LOOP_NONE)
         vid.play()
-        print vid.isLoaded()
-        print vid.isPlaying()
-        print vid.isInitialized()
-        print vid.isPaused()
-        print vid.getPosition()
+
 
 def load_video(path):
     if not os.path.isfile(path):
