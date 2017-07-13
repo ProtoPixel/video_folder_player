@@ -38,14 +38,15 @@ def load_next_video():
     "Checks what's the next video to be loaded and loads it"
     global current_video_file
 
-    video_folder = content['video folder']
+    video_folder = DEFAULT_VIDEO_PATH
 
-    if not os.path.isdir(video_folder):
-        video_folder = os.path.dirname(video_folder)
-
-    # get the default video folder in case the specified one does not exist
     if not os.path.exists(video_folder):
-        video_folder = DEFAULT_VIDEO_PATH
+        video_folder = content['video folder']
+
+        if not os.path.isdir(video_folder):
+            video_folder = os.path.dirname(video_folder)
+
+        # get the default video folder in case the specified one does not exist
         if not os.path.exists(video_folder):
             # no valid folder
             return
